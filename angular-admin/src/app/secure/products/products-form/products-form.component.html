@@ -1,0 +1,27 @@
+<form [formGroup]="form" (submit)="submit()">
+  <div class="mb-3">
+    <mat-form-field appearance="standard">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput placeholder="Title">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="standard">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="standard">
+      <mat-label>Image</mat-label>
+      <input formControlName="image" matInput placeholder="Image">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="standard">
+      <mat-label>Price</mat-label>
+      <input formControlName="price" type="number" matInput placeholder="Price">
+    </mat-form-field>
+  </div>
+  <button mat-flat-button color="primary">Save</button>
+</form>

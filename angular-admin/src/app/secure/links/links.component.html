@@ -1,0 +1,24 @@
+<table mat-table [dataSource]="dataSource" class="table table-striped table-sm mat-elevation-z8">
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let link"> {{link.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef>Code</th>
+    <td mat-cell *matCellDef="let link"> {{link.code}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="count">
+    <th mat-header-cell *matHeaderCellDef>Count</th>
+    <td mat-cell *matCellDef="let link"> {{link.orders.length }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="revenue">
+    <th mat-header-cell *matHeaderCellDef>Revenue</th>
+    <td mat-cell *matCellDef="let link"> {{sum(link.orders)}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>

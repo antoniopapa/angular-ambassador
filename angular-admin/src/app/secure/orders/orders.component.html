@@ -1,0 +1,28 @@
+<mat-expansion-panel hideToggle *ngFor="let order of orders">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{order.name}} {{order.email}}
+    </mat-panel-title>
+    <mat-panel-description>
+      ${{order.total}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <table class="table table-striped table-sm">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Product Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of order.order_items">
+      <td>{{item.id}}</td>
+      <td>{{item.product_title}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.quantity}}</td>
+    </tr>
+    </tbody>
+  </table>
+</mat-expansion-panel>

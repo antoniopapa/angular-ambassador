@@ -1,0 +1,45 @@
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <a routerLink="/products/create" mat-stroked-button color="primary">Add</a>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="table table-striped table-sm mat-elevation-z8">
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef>Image</th>
+    <td mat-cell *matCellDef="let product"><img [src]="product.image" height="50"/></td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let product"> {{product.title}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let product"> {{product.description}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let product"> {{product.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let product">
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle [routerLink]="['/products', product.id, 'edit']">Edit</mat-button-toggle>
+        <mat-button-toggle (click)="delete(product.id)">Delete</mat-button-toggle>
+      </mat-button-toggle-group>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
+
+<mat-paginator pageSize="10" showFirstLastButtons></mat-paginator>
