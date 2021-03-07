@@ -1,0 +1,18 @@
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+    <tr>
+      <th>Link</th>
+      <th>Users</th>
+      <th>Revenue</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let link of links">
+      <td>{{checkoutLink(link.code)}}</td>
+      <td>{{link.count}}</td>
+      <td>{{link.revenue}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

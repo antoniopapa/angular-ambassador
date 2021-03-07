@@ -1,0 +1,44 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <div class="col-md-12 mb-4">
+    <div class="alert alert-info" role="alert" *ngIf="link">
+      Link generated: {{link}}
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-4" *ngIf="error">
+    <div class="alert alert-danger" role="alert">
+      You should be logged in to generate a link!
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-4 input-group">
+    <input type="text" class="form-control" placeholder="Search" (keyup)="search($event.target.value)">
+    <div class="input-group-append" *ngIf="selected.length > 0">
+      <button class="btn btn-info" (click)="generate()">Generate Link</button>
+    </div>
+    <div class="input-group-append">
+      <select class="form-select" (change)="sortChanged($event.target.value)">
+        <option>Select</option>
+        <option value="asc">Price Ascending</option>
+        <option value="desc">Price Descending</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col" *ngFor="let product of products | filter: s | paginate: page:9| sort: sort ">
+    <div class="card shadow-sm" (click)="select(product.id)" [class.selected]="isSelected(product.id)">
+      <img [src]="product.image" height="200">
+
+      <div class="card-body">
+        <p class="card-text">{{product.title}}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-muted">${{product.price}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-4" *ngIf="showButton">
+  <button class="btn btn-primary" (click)="loadMore()">Load More</button>
+</div>

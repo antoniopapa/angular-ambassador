@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+
+<main>
+
+  <app-header *ngIf="isMainPage()"></app-header>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+
+</main>
